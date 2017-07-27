@@ -1,0 +1,196 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Exercise_1</title><meta name="generator" content="MATLAB 9.1"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-10-03"><meta name="DC.source" content="Exercise_1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput">MyData = xlsread(<span class="string">'1microfarad10kresistor'</span>);
+figure(1)
+moisturevoltage = plot(MyData(:,1),MyData(:,2),<span class="string">'b'</span>,<span class="string">'LineWidth'</span>,2);
+hold <span class="string">on</span>;
+capacitorvoltage = plot(MyData(:,1),MyData(:,3),<span class="string">'r'</span>,<span class="string">'LineWidth'</span>,2);
+title(<span class="string">'Filtering Of Moisture Sensor'</span>);
+xlabel(<span class="string">'Time'</span>);
+ylabel(<span class="string">'Voltage in Volts'</span>);
+legend(<span class="string">'Unfiltered'</span>,<span class="string">'filtered'</span>,<span class="string">'location'</span>,<span class="string">'southeast'</span>)
+</pre><img vspace="5" hspace="5" src="Exercise_1_01.png" alt=""> <pre class="codeinput">NewData = xlsread(<span class="string">'2200microfarad_data'</span>);
+figure(2)
+moisturevoltage2 = plot(NewData(:,1),NewData(:,2),<span class="string">'b'</span>,<span class="string">'LineWidth'</span>,2);
+hold <span class="string">on</span>;
+capacitorvoltage2 = plot(NewData(:,1),NewData(:,3),<span class="string">'r'</span>,<span class="string">'LineWidth'</span>,2);
+title(<span class="string">'Filtering Of Moisture Sensor'</span>);
+xlabel(<span class="string">'Time'</span>);
+ylabel(<span class="string">'Voltage in Volts'</span>);
+legend(<span class="string">'Unfiltered'</span>,<span class="string">'filtered'</span>,<span class="string">'location'</span>,<span class="string">'southeast'</span>)
+</pre><img vspace="5" hspace="5" src="Exercise_1_02.png" alt=""> <p>Conclusions: Based on the following graphs we can see minimal filtering done by the 1 microfarad capacitor and something else happening with the 2200 microfarad capacitor. I believe that there is an onboard filter for my moisture sensor which would mean that there are two parallel filters in the circuit that was created. I know it is possible to put a high pass and low pass in parallel to produce a band pass filter, but the effect of two lows with the large capacitor looks as if the capacitor may not be discharging during the length of test, at least that is my best guess.</p><pre class="codeinput">alphalow = xlsread(<span class="string">'alpha_is_0.1.xlsx'</span>);
+alphamed = xlsread(<span class="string">'alpha_is_0.5.xlsx'</span>);
+alphahigh = xlsread(<span class="string">'alpha_is_0.9.xlsx'</span>);
+
+
+
+subplot(2,2,1)
+title(<span class="string">'Digital Filtering Of Moisture Sensor'</span>);
+digitalraw = plot(alphalow(:,1),alphalow(:,2),<span class="string">'b'</span>,<span class="string">'LineWidth'</span>,2);
+hold <span class="string">on</span>;
+digitalfiltering = plot(alphalow(:,1),alphalow(:,3),<span class="string">'--r'</span>,<span class="string">'LineWidth'</span>,2);
+title(<span class="string">'alpha is 0.1'</span>);
+xlabel(<span class="string">'Time'</span>);
+ylabel(<span class="string">'Voltage in Volts'</span>);
+legend(<span class="string">'Unfiltered'</span>,<span class="string">'filtered'</span>,<span class="string">'location'</span>,<span class="string">'southeast'</span>)
+
+subplot(2,2,2)
+digitalraw2 = plot(alphamed(:,1),alphamed(:,2),<span class="string">'b'</span>,<span class="string">'LineWidth'</span>,2);
+hold <span class="string">on</span>;
+digitalfiltering2 = plot(alphamed(:,1),alphamed(:,3),<span class="string">'r'</span>,<span class="string">'LineWidth'</span>,2);
+title(<span class="string">'alpha is 0.5'</span>);
+xlabel(<span class="string">'Time'</span>);
+ylabel(<span class="string">'Voltage in Volts'</span>);
+legend(<span class="string">'Unfiltered'</span>,<span class="string">'filtered'</span>,<span class="string">'location'</span>,<span class="string">'southeast'</span>)
+
+subplot(2,2,3)
+digitalraw3 = plot(alphahigh(:,1),alphahigh(:,2),<span class="string">'b'</span>,<span class="string">'LineWidth'</span>,2);
+hold <span class="string">on</span>;
+digitalfiltering3 = plot(alphahigh(:,1),alphahigh(:,3),<span class="string">'r'</span>,<span class="string">'LineWidth'</span>,2);
+title(<span class="string">'alpha is 0.9'</span>);
+xlabel(<span class="string">'Time'</span>);
+ylabel(<span class="string">'Voltage in Volts'</span>);
+legend(<span class="string">'Unfiltered'</span>,<span class="string">'filtered'</span>,<span class="string">'location'</span>,<span class="string">'southeast'</span>)
+</pre><img vspace="5" hspace="5" src="Exercise_1_03.png" alt=""> <p>When i applied the digital filter all three of my data sets had the same value for the unfiltered anddigitally filtered signal. I made the first graph dashed so that this can be seen to be true, the other two graphs do have two lines in them but the filtered data covers up the unfiltered data. There are no zoom in of the plots because of this, the values are the same in this case.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+MyData = xlsread('1microfarad10kresistor'); 
+figure(1)
+moisturevoltage = plot(MyData(:,1),MyData(:,2),'b','LineWidth',2);
+hold on;
+capacitorvoltage = plot(MyData(:,1),MyData(:,3),'r','LineWidth',2); 
+title('Filtering Of Moisture Sensor');
+xlabel('Time');
+ylabel('Voltage in Volts');
+legend('Unfiltered','filtered','location','southeast')
+%%
+NewData = xlsread('2200microfarad_data'); 
+figure(2)
+moisturevoltage2 = plot(NewData(:,1),NewData(:,2),'b','LineWidth',2);
+hold on;
+capacitorvoltage2 = plot(NewData(:,1),NewData(:,3),'r','LineWidth',2); 
+title('Filtering Of Moisture Sensor');
+xlabel('Time');
+ylabel('Voltage in Volts');
+legend('Unfiltered','filtered','location','southeast')
+
+%%
+% Conclusions: Based on the following graphs we can see minimal filtering
+% done by the 1 microfarad capacitor and something else happening with the
+% 2200 microfarad capacitor. I believe that there is an onboard filter for
+% my moisture sensor which would mean that there are two parallel filters
+% in the circuit that was created. I know it is possible to put a high pass
+% and low pass in parallel to produce a band pass filter, but the effect of
+% two lows with the large capacitor looks as if the capacitor may not be
+% discharging during the length of test, at least that is my best guess.
+
+%%
+alphalow = xlsread('alpha_is_0.1.xlsx');
+alphamed = xlsread('alpha_is_0.5.xlsx');
+alphahigh = xlsread('alpha_is_0.9.xlsx');
+
+
+
+subplot(2,2,1)
+title('Digital Filtering Of Moisture Sensor');
+digitalraw = plot(alphalow(:,1),alphalow(:,2),'b','LineWidth',2);
+hold on;
+digitalfiltering = plot(alphalow(:,1),alphalow(:,3),'REPLACE_WITH_DASH_DASHr','LineWidth',2); 
+title('alpha is 0.1');
+xlabel('Time');
+ylabel('Voltage in Volts');
+legend('Unfiltered','filtered','location','southeast')
+
+subplot(2,2,2)
+digitalraw2 = plot(alphamed(:,1),alphamed(:,2),'b','LineWidth',2);
+hold on;
+digitalfiltering2 = plot(alphamed(:,1),alphamed(:,3),'r','LineWidth',2); 
+title('alpha is 0.5');
+xlabel('Time');
+ylabel('Voltage in Volts');
+legend('Unfiltered','filtered','location','southeast')
+
+subplot(2,2,3)
+digitalraw3 = plot(alphahigh(:,1),alphahigh(:,2),'b','LineWidth',2);
+hold on;
+digitalfiltering3 = plot(alphahigh(:,1),alphahigh(:,3),'r','LineWidth',2); 
+title('alpha is 0.9');
+xlabel('Time');
+ylabel('Voltage in Volts');
+legend('Unfiltered','filtered','location','southeast')
+
+%%
+% When i applied the digital filter all three of my data sets had the same
+% value for the unfiltered anddigitally filtered signal. I made the first
+% graph dashed so that this can be seen to be true, the other two graphs do
+% have two lines in them but the filtered data covers up the unfiltered
+% data. There are no zoom in of the plots because of this, the values are
+% the same in this case.
+
+##### SOURCE END #####
+--></body></html>

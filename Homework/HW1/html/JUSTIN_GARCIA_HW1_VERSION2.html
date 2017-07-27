@@ -1,0 +1,337 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Homework 1</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-09-15"><meta name="DC.source" content="JUSTIN_GARCIA_HW1_VERSION2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Homework 1</h1><!--introduction--><p>Justin Garcia Due: 9/13/2016</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Problem 1 - Develop a script (and a function) for sine signal identification.</a></li><li><a href="#2">Problem 2 - Create nested for loops which vary x(1) and x(2) within their given ranges with 100 linearly spaced increments:</a></li><li><a href="#3">Problem 2 Continued: Write a piece of code that finds the minimum value of CumError and corresponding x1 and x2 values (x1_opt and x2_opt).</a></li><li><a href="#4">Problem 3 - Using the built in optimization function</a></li><li><a href="#5">Problem 4 -</a></li><li><a href="#6">Appendix of funstions</a></li><li><a href="#7">SineQuadraticError</a></li><li><a href="#8">Function File : Sine Quadratic Error</a></li><li><a href="#9">MinErrorFunction</a></li></ul></div><h2>Problem 1 - Develop a script (and a function) for sine signal identification.<a name="1"></a></h2><p>clear all; close all; clc</p><pre class="codeinput">ExpData = xlsread(<span class="string">'SineWaveData.xlsx'</span>);
+x1 = ExpData(:,1);
+x2 = ExpData(:,2);
+M = 5;
+f = 10;
+phi = 0;
+
+
+<span class="keyword">for</span> i = 1:length(x1)
+    <span class="keyword">for</span> j = 1:length(x2)
+        x = [x1(i) x2(j)];
+        Error(i,j) = SineQuadraticError(x); <span class="comment">% This creates a 13x13 matrix</span>
+        TotalError = diag(Error);<span class="comment">% We take advantage that the diagonal values of this matrix has matching indices, which corresponds to the original matching values we want to calculate together</span>
+        TotalError = sum(TotalError); <span class="comment">% This is the sum of those thirteen entries</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><h2>Problem 2 - Create nested for loops which vary x(1) and x(2) within their given ranges with 100 linearly spaced increments:<a name="2"></a></h2><p>After discussing the homework problem with my peers I learned that it is better in this case to use the .* command to go element by element instead of trying to use 4 for loops. Old code can be found in the appendix along with function MinimumSineQuadraticError.</p><pre class="codeinput">ExpData = xlsread(<span class="string">'SineWaveData.xlsx'</span>);
+h1 = ExpData(:,1);
+h2 = ExpData(:,2);
+f2 = 10;
+A = (5:5/99:10);
+phi2 = (0:pi/198:pi/2);
+
+<span class="keyword">for</span> i = 1:length(A)
+    <span class="keyword">for</span> j = 1:length(phi2)
+        x = [A(i) phi2(j)];
+        AccumulatedError(i,j) = MinErrorFunction(x);
+        VectorError = AccumulatedError(:);
+
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+<span class="comment">% -------------------------------------------------------------------------</span>
+</pre><h2>Problem 2 Continued: Write a piece of code that finds the minimum value of CumError and corresponding x1 and x2 values (x1_opt and x2_opt).<a name="3"></a></h2><pre class="codeinput">tic
+ExpData = xlsread(<span class="string">'SineWaveData.xlsx'</span>);
+h1 = ExpData(:,1);
+h2 = ExpData(:,2);
+f2 = 10;
+A = (5:5/99:10);
+phi2 = (0:pi/198:pi/2);
+A_opt = 0;
+phi_opt = 0;
+LowestOutput = 1000;
+
+<span class="keyword">for</span> i = 1:length(A)
+    <span class="keyword">for</span> j = 1:length(phi2)
+        x = [A(i) phi2(j)];
+        AccumulatedError(i,j) = MinErrorFunction(x);
+         <span class="keyword">if</span> AccumulatedError(i,j) &lt; LowestOutput
+             A_opt = A(i);
+             phi_opt = phi2(j);
+             LowestOutput = AccumulatedError(i,j);
+         <span class="keyword">end</span>
+        VectorError = AccumulatedError(:);
+
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+toc
+disp([<span class="string">'Estimated amplitude is: '</span> num2str(A_opt) <span class="string">'[V]'</span>])
+disp([<span class="string">'Estimated phase shift is: '</span> num2str(phi_opt) <span class="string">'[Radians]'</span>])
+disp([<span class="string">'Estimated minimum error is: '</span> num2str(LowestOutput) <span class="string">'[units]'</span>])
+
+figure(1)
+subplot(2,1,1)
+surf(A,phi2,AccumulatedError)
+hold <span class="string">on</span>
+t_sim = [0:0.001:(ExpData(end,1))];
+y_sim = A_opt*sin(2*pi*10*t_sim + phi_opt);
+<span class="comment">% y_sim = y_sim(:);</span>
+subplot(2,1,2)
+plot(t_sim,y_sim)
+hold <span class="string">on</span>
+plot(h1,h2)
+</pre><pre class="codeoutput">Elapsed time is 13.924224 seconds.
+Estimated amplitude is: 8.7879[V]
+Estimated phase shift is: 1.0472[Radians]
+Estimated minimum error is: 6.2391[units]
+</pre><img vspace="5" hspace="5" src="JUSTIN_GARCIA_HW1_VERSION2_01.png" alt=""> <h2>Problem 3 - Using the built in optimization function<a name="4"></a></h2><pre class="codeinput">A_opt2 = 8.7879;
+phi_opt2 = phi_opt;
+x1_initial = 7.5;
+x2_initial = pi/4;
+
+
+[A_opt2,phi_opt2] = fminsearch(<span class="string">'MinErrorFunction'</span>,[x1_initial x2_initial]);
+A_opt2 = A_opt2(end);<span class="comment">%before i was using only the variables A_opt and phi_opt but for some reason the second num2strng command turned A_opt into a 1x2 matrix so my temporary solution was to create A_opt2 and let that become concatenated and then take its last value.</span>
+
+disp([<span class="string">'Estimated amplitude is: '</span> num2str(A_opt2) <span class="string">'[V]'</span>])
+disp([<span class="string">'Estimated phase shift is: '</span> num2str(phi_opt2) <span class="string">'[Radians]'</span>])
+</pre><pre class="codeoutput">Estimated amplitude is: 1.0492[V]
+Estimated phase shift is: 6.2368[Radians]
+</pre><h2>Problem 4 -<a name="5"></a></h2><pre class="codeinput">tic
+CumErrorTrace = [];
+A_opt2 = 8.7879;
+phi_opt2 = phi_opt;
+x1_initial = 7.5;
+x2_initial = pi/4;
+
+[A_opt2,phi_opt2] = fminsearch(<span class="string">'MinErrorFunction'</span>,[x1_initial x2_initial]);
+A_opt2 = A_opt2(end);
+
+figure(2); plot(CumErrorTrace);
+toc
+</pre><pre class="codeoutput">Elapsed time is 0.164397 seconds.
+</pre><img vspace="5" hspace="5" src="JUSTIN_GARCIA_HW1_VERSION2_02.png" alt=""> <h2>Appendix of funstions<a name="6"></a></h2><h2>SineQuadraticError<a name="7"></a></h2><h2>Function File : Sine Quadratic Error<a name="8"></a></h2><p>function Error = SineQuadraticError(x)</p><pre>   M = evalin('base','M');
+   f = evalin('base','f');
+   phi = evalin('base','phi');</pre><pre>   ym = x(2);
+   yk = M*sin(2*pi*f*(x(1)) + phi);
+   Error = (ym - yk)^2;
+end</pre><h2>MinErrorFunction<a name="9"></a></h2><pre class="codeinput"><span class="comment">% function  AccumulatedError = MinErrorFunction(x)</span>
+<span class="comment">% t = evalin ('base','h1');</span>
+<span class="comment">% Volts = evalin ('base','h2');</span>
+<span class="comment">% f = evalin('base','f2');</span>
+<span class="comment">%</span>
+<span class="comment">% yk = x(1)*sin(t.*2*pi*f + x(2));</span>
+<span class="comment">% Error = (Volts - yk).^2;</span>
+<span class="comment">% AccumulatedError = sum(Error);</span>
+<span class="comment">% CumErrorTrace = evalin('base','CumErrorTrace');</span>
+<span class="comment">% CumErrorTrace = [CumErrorTrace AccumulatedError];</span>
+<span class="comment">% assignin('base','CumErrorTrace',CumErrorTrace);</span>
+<span class="comment">%</span>
+<span class="comment">% end</span>
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Homework 1
+% Justin Garcia
+% Due: 9/13/2016
+
+%% Problem 1 - Develop a script (and a function) for sine signal identification.
+% clear all; close all; clc
+
+ExpData = xlsread('SineWaveData.xlsx');
+x1 = ExpData(:,1);
+x2 = ExpData(:,2);
+M = 5;
+f = 10;
+phi = 0;
+
+
+for i = 1:length(x1)
+    for j = 1:length(x2)
+        x = [x1(i) x2(j)];
+        Error(i,j) = SineQuadraticError(x); % This creates a 13x13 matrix
+        TotalError = diag(Error);% We take advantage that the diagonal values of this matrix has matching indices, which corresponds to the original matching values we want to calculate together
+        TotalError = sum(TotalError); % This is the sum of those thirteen entries
+    end
+end
+
+%% Problem 2 - Create nested for loops which vary x(1) and x(2) within their given ranges with 100 linearly spaced increments:
+% After discussing the homework problem with my peers I learned that it is
+% better in this case to use the .* command to go element by element
+% instead of trying to use 4 for loops. Old code can be found in the
+% appendix along with function MinimumSineQuadraticError.
+ExpData = xlsread('SineWaveData.xlsx');
+h1 = ExpData(:,1);
+h2 = ExpData(:,2);
+f2 = 10;
+A = (5:5/99:10);
+phi2 = (0:pi/198:pi/2);
+
+for i = 1:length(A)
+    for j = 1:length(phi2)
+        x = [A(i) phi2(j)];
+        AccumulatedError(i,j) = MinErrorFunction(x);   
+        VectorError = AccumulatedError(:);
+        
+    end
+end
+% REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-
+%% Problem 2 Continued: Write a piece of code that finds the minimum value of CumError and corresponding x1 and x2 values (x1_opt and x2_opt).
+tic
+ExpData = xlsread('SineWaveData.xlsx');
+h1 = ExpData(:,1);
+h2 = ExpData(:,2);
+f2 = 10;
+A = (5:5/99:10);
+phi2 = (0:pi/198:pi/2);
+A_opt = 0;
+phi_opt = 0;
+LowestOutput = 1000;
+
+for i = 1:length(A)
+    for j = 1:length(phi2)
+        x = [A(i) phi2(j)];
+        AccumulatedError(i,j) = MinErrorFunction(x);  
+         if AccumulatedError(i,j) < LowestOutput
+             A_opt = A(i);
+             phi_opt = phi2(j);
+             LowestOutput = AccumulatedError(i,j);
+         end
+        VectorError = AccumulatedError(:);
+        
+    end
+end
+toc
+disp(['Estimated amplitude is: ' num2str(A_opt) '[V]'])
+disp(['Estimated phase shift is: ' num2str(phi_opt) '[Radians]'])
+disp(['Estimated minimum error is: ' num2str(LowestOutput) '[units]'])
+
+figure(1) 
+subplot(2,1,1)
+surf(A,phi2,AccumulatedError)
+hold on
+t_sim = [0:0.001:(ExpData(end,1))];
+y_sim = A_opt*sin(2*pi*10*t_sim + phi_opt);
+% y_sim = y_sim(:);
+subplot(2,1,2)
+plot(t_sim,y_sim)
+hold on
+plot(h1,h2)
+%% Problem 3 - Using the built in optimization function
+A_opt2 = 8.7879;
+phi_opt2 = phi_opt;
+x1_initial = 7.5;
+x2_initial = pi/4;
+
+
+[A_opt2,phi_opt2] = fminsearch('MinErrorFunction',[x1_initial x2_initial]);
+A_opt2 = A_opt2(end);%before i was using only the variables A_opt and phi_opt but for some reason the second num2strng command turned A_opt into a 1x2 matrix so my temporary solution was to create A_opt2 and let that become concatenated and then take its last value.
+
+disp(['Estimated amplitude is: ' num2str(A_opt2) '[V]'])
+disp(['Estimated phase shift is: ' num2str(phi_opt2) '[Radians]'])
+
+
+%% Problem 4 - 
+tic
+CumErrorTrace = [];
+A_opt2 = 8.7879;
+phi_opt2 = phi_opt;
+x1_initial = 7.5;
+x2_initial = pi/4;
+
+[A_opt2,phi_opt2] = fminsearch('MinErrorFunction',[x1_initial x2_initial]);
+A_opt2 = A_opt2(end);
+
+figure(2); plot(CumErrorTrace);
+toc
+
+%% Appendix of funstions
+
+%% SineQuadraticError
+%% Function File : Sine Quadratic Error
+% function Error = SineQuadraticError(x)
+%     
+%     M = evalin('base','M');
+%     f = evalin('base','f');
+%     phi = evalin('base','phi');
+%     
+%     ym = x(2);
+%     yk = M*sin(2*pi*f*(x(1)) + phi);
+%     Error = (ym - yk)^2;  
+% end
+%% MinErrorFunction
+
+% function  AccumulatedError = MinErrorFunction(x)
+% t = evalin ('base','h1');
+% Volts = evalin ('base','h2');
+% f = evalin('base','f2');
+% 
+% yk = x(1)*sin(t.*2*pi*f + x(2));
+% Error = (Volts - yk).^2;
+% AccumulatedError = sum(Error);
+% CumErrorTrace = evalin('base','CumErrorTrace');
+% CumErrorTrace = [CumErrorTrace AccumulatedError];
+% assignin('base','CumErrorTrace',CumErrorTrace);
+% 
+% end
+
+
+##### SOURCE END #####
+--></body></html>

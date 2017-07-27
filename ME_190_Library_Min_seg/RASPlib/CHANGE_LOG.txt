@@ -1,0 +1,6 @@
+
+V1.01
+SerialPlot.m - modified to automatically adjust the number of samples read so the refresh rate of the graph is 30hz.
+
+V1.1 
+Added some missing mex files for various blocks

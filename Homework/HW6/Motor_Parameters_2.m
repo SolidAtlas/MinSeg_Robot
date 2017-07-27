@@ -1,0 +1,9 @@
+Rm = 10;
+Kb = .7;
+Kt = .7;
+Bm = 0.01;
+Lm = 0.004;
+Jm =0.002;
+Tf = 0.02;
+encoder_counts = 920;
+Vsupply = 4.5; 

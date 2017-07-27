@@ -1,0 +1,9 @@
+Rm = 10;   %Ohms
+Kb = .7;   %Vs/Rad
+Kt = .7;   %Nm/A
+Bm = .01;  %Nms/rad
+Lm = .004; %H
+Jm = .002; %Kgm^2 (combined J)
+Tf = .02;  %Nm    (coulomb friction)
+encoder_counts = 720; %Number of counts if using quad encoding
+Vsupply = 4.5; %Driver supply soltage

@@ -1,0 +1,20 @@
+#
+#DAStudio Preference File
+#
+
+
+[General]
+MatlabRelease=2015a
+
+[LibraryBrowser2]
+LBGeometry4Window=536 63 600 550
+LBListWidth=341
+LBScaleFactor=1
+LBSearch_MatchCase=0
+LBSearch_MatchWholeWord=0
+LBSearch_UseRegExp=0
+LBTreePopupHeight=500
+LBTreePopupWidth=250
+LBTreeWidth=243
+LBUseCache=1
+
